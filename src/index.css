@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 6%;
+    --foreground: 45 20% 95%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 45 20% 95%;
+
+    --primary: 152 60% 42%;
+    --primary-foreground: 45 20% 98%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 45 20% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 45 80% 55%;
+    --accent-foreground: 220 20% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 45 20% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 152 60% 42%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 18% 8%;
+    --sidebar-foreground: 45 20% 90%;
+    --sidebar-primary: 152 60% 42%;
+    --sidebar-primary-foreground: 45 20% 98%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 45 20% 90%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 152 60% 42%;
+
+    /* Custom tokens */
+    --gold: 45 80% 55%;
+    --gold-muted: 45 50% 40%;
+    --emerald: 152 60% 42%;
+    --emerald-glow: 152 70% 50%;
+    --chess-dark: 220 20% 12%;
+    --chess-light: 220 15% 22%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(152 60% 42%), hsl(152 70% 35%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 80% 55%), hsl(45 70% 45%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 20% 8%), hsl(220 20% 4%));
+    --gradient-glass: linear-gradient(135deg, hsla(220, 15%, 20%, 0.6), hsla(220, 15%, 15%, 0.4));
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsla(152, 60%, 42%, 0.3);
+    --shadow-gold: 0 0 30px hsla(45, 80%, 55%, 0.2);
+    --shadow-card: 0 10px 40px -10px hsla(0, 0%, 0%, 0.5);
+  }
+
+  .dark {
+    --background: 220 20% 6%;
+    --foreground: 45 20% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: var(--gradient-dark);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:bg-card/80 hover:border-primary/30;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .chess-pattern {
+    background-image: 
+      linear-gradient(45deg, hsl(var(--chess-dark)) 25%, transparent 25%),
+      linear-gradient(-45deg, hsl(var(--chess-dark)) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, hsl(var(--chess-dark)) 75%),
+      linear-gradient(-45deg, transparent 75%, hsl(var(--chess-dark)) 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300;
+    @apply shadow-lg hover:shadow-xl hover:scale-[1.02];
+  }
+
+  .btn-gold {
+    @apply text-accent-foreground transition-all duration-300;
+    @apply shadow-lg hover:shadow-xl hover:scale-[1.02];
+    background-image: var(--gradient-gold);
+  }
+
+  .btn-gold:hover {
+    filter: brightness(1.1);
+  }
+
+  .input-dark {
+    @apply bg-input border-border text-foreground placeholder:text-muted-foreground;
+    @apply focus:border-primary focus:ring-1 focus:ring-primary/50;
+    @apply transition-all duration-200;
+  }
+
+  .card-glass {
+    @apply glass rounded-xl p-6 shadow-card;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
