@@ -4,6 +4,7 @@ A full-stack real-time online chess platform built using **Spring Boot (Backend)
 The project supports **authentication, matchmaking, real-time gameplay, and chat** using WebSockets.
 
 ---
+<img width="1039" height="545" alt="image" src="https://github.com/user-attachments/assets/594a186d-61b3-40d7-82fa-393697252180" />
 
 ## 🧩 Project Structure
 
@@ -41,6 +42,7 @@ IndiChessClone/
 ├── pom.xml
 └── README.md
 
+<img width="1045" height="550" alt="image" src="https://github.com/user-attachments/assets/83ef4267-843e-4f5d-a943-2d218b300ac4" />
 
 ---
 
